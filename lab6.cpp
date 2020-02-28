@@ -4,6 +4,7 @@
 #include <iostream>
 #include <iomanip>
 #include <cmath>
+#include <cstdlib>
 
 using namespace std;
 
@@ -34,9 +35,9 @@ int main()
     cout << "|                      OPTIONS                             |\n";
     cout << "-----------------------------------------------------------\n\n";
 
-    cout << "1.) Area of Rectangle\n\n";
-    cout << "2.) Area of Circle\n\n";
-    cout << "3.) Volume of Cylinder\n\n";
+    cout << " 1.) Area of Rectangle\n\n";
+    cout << " 2.) Area of Circle\n\n";
+    cout << " 3.) Volume of Cylinder\n\n";
     cout << "-1.) EXIT\n\n";
 
     // User prompt to choose a calculation
@@ -50,82 +51,74 @@ int main()
         exit(1);
     }
     // If statement to check and see if the correct selection was inputed
-    else if (selectionChoice == 1 || selectionChoice == 2 || selectionChoice == 3 || selectionChoice == -1)
+    else if (selectionChoice == 1 || selectionChoice == 2 || selectionChoice == 3)
     {
-        // While loop to keep the program running until -1 is entered
-        while (selectionChoice != -1)
+        // Switch statement to check the selectionChoice variable against the different options
+        switch (selectionChoice)
         {
-            // Switch statement to check the selectionChoice variable against the different options
-            switch (selectionChoice)
-            {
-            // Case 1 for finding the area of rectangle
-            case 1:
-                cout << "------------------------------------\n";
-                cout << "Enter LENGTH of rectangle: ";
-                cin >> length;
-                cout << endl;
+        // Case 1 for finding the area of rectangle
+        case 1:
+            cout << "------------------------------------\n";
+            cout << "Enter LENGTH of rectangle: ";
+            cin >> length;
+            cout << endl;
 
-                cout << "Enter WIDTH of rectangle: ";
-                cin >> width;
-                cout << endl;
+            cout << "Enter WIDTH of rectangle: ";
+            cin >> width;
+            cout << endl;
 
-                cout << "-------------------------------\n";
-                cout << "A = L * W\n";
-                cout << "A = " << length << " * " << width << endl;
-                cout << "AREA OF RECTANGLE: " << Calculate_Area_Of_Rectangle(length, width) << endl;
-                cout << "-------------------------------\n";
+            cout << "-------------------------------\n";
+            cout << "A = L * W\n";
+            cout << "A = " << length << " * " << width << endl;
+            cout << "AREA OF RECTANGLE: " << Calculate_Area_Of_Rectangle(length, width) << endl;
+            cout << "-------------------------------\n";
 
-                Ask_To_Save_Calculation(yesOrNo);
-                break;
+            Ask_To_Save_Calculation(yesOrNo);
+            break;
 
-            // Case 2 for finding the area of a circle
-            case 2:
-                cout << "------------------------------------\n";
-                cout << "Enter RADIUS of circle: ";
-                cin >> radius;
-                cout << endl;
+        // Case 2 for finding the area of a circle
+        case 2:
+            cout << "------------------------------------\n";
+            cout << "Enter RADIUS of circle: ";
+            cin >> radius;
+            cout << endl;
 
-                cout << "-------------------------------\n";
-                cout << "A = pi * r^2\n";
-                cout << "A = " << pi << " * " << radius << "^2" << endl;
-                cout << "AREA OF CIRCLE: " << Calculate_Area_Of_Circle(radius) << endl;
-                cout << "-------------------------------\n";
+            cout << "-------------------------------\n";
+            cout << "A = pi * r^2\n";
+            cout << "A = " << pi << " * " << radius << "^2" << endl;
+            cout << "AREA OF CIRCLE: " << Calculate_Area_Of_Circle(radius) << endl;
+            cout << "-------------------------------\n";
 
-                Ask_To_Save_Calculation(yesOrNo);
-                break;
+            Ask_To_Save_Calculation(yesOrNo);
+            break;
 
-            // Case 3 for finding the volume of a cylinder
-            case 3:
-                cout << "------------------------------------\n";
-                cout << "Enter RADIUS of cylinder: ";
-                cin >> radius;
-                cout << endl;
+        // Case 3 for finding the volume of a cylinder
+        case 3:
+            cout << "------------------------------------\n";
+            cout << "Enter RADIUS of cylinder: ";
+            cin >> radius;
+            cout << endl;
 
-                cout << "Enter HEIGHT of cylinder: ";
-                cin >> height;
-                cout << endl;
+            cout << "Enter HEIGHT of cylinder: ";
+            cin >> height;
+            cout << endl;
 
-                cout << "-------------------------------\n";
-                cout << "V = pi * r^2 * h\n";
-                cout << "V" << " = " << pi << " * " << radius << "^2 * " << height << endl;
-                cout << "VOLUME OF CYLINDER: " << Calculate_Volume_Of_Cylinder(radius, height) << endl;
-                cout << "-------------------------------\n";
+            cout << "-------------------------------\n";
+            cout << "V = pi * r^2 * h\n";
+            cout << "V" << " = " << pi << " * " << radius << "^2 * " << height << endl;
+            cout << "VOLUME OF CYLINDER: " << Calculate_Volume_Of_Cylinder(radius, height) << endl;
+            cout << "-------------------------------\n";
 
-                Ask_To_Save_Calculation(yesOrNo);
-                break;
-            }
+            Ask_To_Save_Calculation(yesOrNo);
+            break;
         }
     }
     else
     {
         // Using cin.ignore() to allow the user to press enter so that it doesn't
         // automatically jump straight to the new screen
-        cin.ignore();
-        cout << "\nINVALID SELECTION... PRESS ENTER TO RETURN TO MENU..." << endl;
-        cin.ignore();
-
-        system("CLS");
-        return main();
+        cout << "\nINVALID SELECTION... EXITING PROGRAM..." << endl;
+        exit(1);
     }
 
 
